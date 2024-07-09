@@ -287,3 +287,19 @@ const books = [
     highlighted: true,
   },
 ];
+
+const [firstBook, secondBook] = books;
+const [, , thirdBook] = books;
+console.log(firstBook);
+
+const ratings = [
+  ['rating', 4.19],
+  ['ratingsCount', 144584],
+];
+const [[, rating], [, ratingsCount]] = ratings;
+
+console.log(ratings);
+
+const ratingStars = [63405, 1808];
+
+const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
