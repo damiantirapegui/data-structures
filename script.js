@@ -302,81 +302,81 @@
 // const [oneStarRatings, fiveStarRatings, threeStarRatings = 0] = ratingStars;
 // console.log(oneStarRatings, fiveStarRatings, threeStarRatings);
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+//   openingHours: {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   },
 
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+//   order: function (starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
 
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = '20:00',
-    adress,
-  }) {
-    console.log(
-      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time} `
-    );
-  },
-};
+//   orderDelivery: function ({
+//     starterIndex = 1,
+//     mainIndex = 0,
+//     time = '20:00',
+//     adress,
+//   }) {
+//     console.log(
+//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time} `
+//     );
+//   },
+// };
 
-restaurant.orderDelivery({
-  time: '22:30',
-  adress: 'via del sol, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-});
-restaurant.orderDelivery({
-  adress: 'via del sol, 21',
-  starterIndex: 2,
-});
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   adress: 'via del sol, 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+// restaurant.orderDelivery({
+//   adress: 'via del sol, 21',
+//   starterIndex: 2,
+// });
 
-const { name, openingHours, categories } = restaurant;
-// console.log(openingHours)
+// const { name, openingHours, categories } = restaurant;
+// // console.log(openingHours)
 
-//Renaming the variables
-const {
-  name: restaurantName,
-  openingHours: hours,
-  // categories: tags,
-} = restaurant;
-// console.log(restaurantName, hours, tags);
+// //Renaming the variables
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   // categories: tags,
+// } = restaurant;
+// // console.log(restaurantName, hours, tags);
 
-const { menu = [], starterMenu: starters = [] } = restaurant;
-// console.log(menu, starters);
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// // console.log(menu, starters);
 
-// mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
-console.log(a, b);
+// // mutating variables
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+// console.log(a, b);
 
-// Nested object
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// // Nested object
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
 
 const books = [
   {
@@ -672,8 +672,65 @@ const books = [
 // } = books[0];
 // console.log(bookRating)
 
-books[0].printBookInfo({
-  title: 'Algorithms',
-  author: 'Robert Sedgewicks',
-  year: '2011',
-});
+// books[0].printBookInfo({
+//   title: 'Algorithms',
+//   author: 'Robert Sedgewicks',
+//   year: '2011',
+// });
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+console.log(...newArr);
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+};
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
+
+const mainMenuCopy = [...restaurant.mainMenu];
+const menu = [...mainMenuCopy, ...restaurant.starterMenu];
+// console.log(...menu);
+
+// const ingredients = [
+//   prompt('lets make pasta! Ingredient 1?'),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+// ];
+
+// restaurant.orderPasta(...ingredients);
+
+const newRestaurant = { fonundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
