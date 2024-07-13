@@ -411,7 +411,11 @@ const books = [
       },
     },
     highlighted: true,
+    printBookInfo: function ({ title, author, year = 'year unknown' }) {
+      console.log(`${title}, by ${author}, ${year}`);
+    },
   },
+
   {
     title: 'Structure and Interpretation of Computer Programs',
     author: [
@@ -625,5 +629,51 @@ const books = [
 
 // My solution
 
-const { programmingLanguage = 'unknown', language } = books[6];
-console.log(programmingLanguage, language);
+// const { programmingLanguage = 'unknown', language } = books[6];
+// console.log(programmingLanguage, language);
+
+// 4. Below are two variables called bookTitle and bookAuthor.
+// Reassign them with the values of the title and author
+// properties of the first book object from the books array.
+
+// let bookTitle = 'unknown';
+// let bookAuthor = 'unknown';
+
+// ({ title: bookTitle, author: bookAuthor } = books[0]);
+
+// console.log(bookTitle, bookAuthor);
+
+// Each book object has a deeply nested rating property as illustrated below:
+
+// {
+//   title: 'Algorithms',
+
+//   thirdParty: {
+//     goodreads: {
+//       rating: 4.41,              // <-- HERE
+//       ratingsCount: 1733,
+//       reviewsCount: 63,
+//       fiveStarRatingCount: 976,
+//       oneStarRatingCount: 13
+//     }
+//   }
+// }
+// Destructure the first book object from the books array into a variable called bookRating.
+// In the result of your destructuring, the bookRating variable should be assigned with
+// the value of the book[0].thirdParty.goodreads.rating property.
+
+// Please do most of the work on the left side of the assignment operator: const ... = books[0];
+
+//My solution
+// const {
+//   thirdParty: {
+//     goodreads: { rating: bookRating },
+//   },
+// } = books[0];
+// console.log(bookRating)
+
+books[0].printBookInfo({
+  title: 'Algorithms',
+  author: 'Robert Sedgewicks',
+  year: '2011',
+});
