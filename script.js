@@ -378,6 +378,183 @@
 // } = openingHours;
 // console.log(o, c);
 
+// 1. Destructure the first book object from the books array into variables called title, author and ISBN.
+// My solution
+// const [{ title, ISBN, author }] = books; // Solution is good but you'll have to use many comas if you want last book
+
+// Jonas solution
+// const { title, author, ISBN } = books[0]; // Good solution for bigger array with object. Choose index
+// console.log(title, ISBN, author);
+
+// 2. Each book object has the keywords property. Destructure the first book object from the books
+//  array into a variable called tags.
+// The tags variable should be assigned with the value of the keywords property.
+
+// My solution
+// const { keywords: tags } = books[0];
+// console.log(tags);
+
+// 3. The seventh book from the books array is missing the programmingLanguage property.
+// Destructure the seventh book object (books[6]) into variables called language and programmingLanguage.
+// Assign the programmingLanguage variable with a default value of 'unknown'.
+
+// My solution
+
+// const { programmingLanguage = 'unknown', language } = books[6];
+// console.log(programmingLanguage, language);
+
+// 4. Below are two variables called bookTitle and bookAuthor.
+// Reassign them with the values of the title and author
+// properties of the first book object from the books array.
+
+// let bookTitle = 'unknown';
+// let bookAuthor = 'unknown';
+
+// ({ title: bookTitle, author: bookAuthor } = books[0]);
+
+// console.log(bookTitle, bookAuthor);
+
+// Each book object has a deeply nested rating property as illustrated below:
+
+// {
+//   title: 'Algorithms',
+
+//   thirdParty: {
+//     goodreads: {
+//       rating: 4.41,              // <-- HERE
+//       ratingsCount: 1733,
+//       reviewsCount: 63,
+//       fiveStarRatingCount: 976,
+//       oneStarRatingCount: 13
+//     }
+//   }
+// }
+// Destructure the first book object from the books array into a variable called bookRating.
+// In the result of your destructuring, the bookRating variable should be assigned with
+// the value of the book[0].thirdParty.goodreads.rating property.
+
+// Please do most of the work on the left side of the assignment operator: const ... = books[0];
+
+//My solution
+// const {
+//   thirdParty: {
+//     goodreads: { rating: bookRating },
+//   },
+// } = books[0];
+// console.log(bookRating)
+
+// books[0].printBookInfo({
+//   title: 'Algorithms',
+//   author: 'Robert Sedgewicks',
+//   year: '2011',
+// });
+
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// // console.log(badNewArr);
+
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
+// console.log(...newArr);
+
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// // console.log(newMenu);
+
+// const mainMenuCopy = [...restaurant.mainMenu];
+// const menu = [...mainMenuCopy, ...restaurant.starterMenu];
+// console.log(...menu);
+
+// const ingredients = [
+//   prompt('lets make pasta! Ingredient 1?'),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+// ];
+
+// restaurant.orderPasta(...ingredients);
+
+// const newRestaurant = { fonundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
+// // console.log(newRestaurant);
+
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurant.name);
+// console.log(restaurantCopy.name);
+
+// 1. Each book object has the author property, which stores an array of strings (author names)
+// if there are multiple authors, or a single string (author name) if there is just one author.
+
+// Declare an array called bookAuthors, and fill it with authors of the first two books from the books array.
+// The bookAuthors array should have just one level (no nested arrays).
+
+//Solution
+// const bookAuthor = { ...books[0].author, ...books[1].author };
+// console.log(bookAuthor);
+
+// const spellWord = function (word) {
+//   console.log(...word);
+// };
+// spellWord('javascript');
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+
+  orderPizza: function (mainIngrediant, ...otherIngrediant) {
+    console.log(mainIngrediant);
+    console.log(otherIngrediant);
+  },
+};
+
+// SPREAD because on the right side of the operator (=)
+// const arr = [1, 2, ...[3, 4]];
+
+// // REST because on the left side of the operator (=)
+// const [a, b, ...other] = [1, 2, 3, 4, 5];
+
+// const [pizza, , ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, otherFood);
+
+// const { ...weekDays } = restaurant.openingHours;
+// console.log(weekDays);
+
+// const add = function (...numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// };
+
+// add(1, 2, 3, 4, 5);
+
+// const x = [23, 4, 5, 10];
+
+// add(...x);
+
+// restaurant.orderPizza('mushrooms', 'garlic', 'pepar');
+
 const books = [
   {
     title: 'Algorithms',
@@ -607,130 +784,28 @@ const books = [
   },
 ];
 
-// 1. Destructure the first book object from the books array into variables called title, author and ISBN.
-// My solution
-// const [{ title, ISBN, author }] = books; // Solution is good but you'll have to use many comas if you want last book
+// 1. Destructure the keywords property (array) of the first book from the books array into variables called
+// mainKeyword and rest. The first keyword should be assigned to mainKeyword,
+// and the rest of the keywords should be assigned to the rest variable (it should be an array).
 
-// Jonas solution
-// const { title, author, ISBN } = books[0]; // Good solution for bigger array with object. Choose index
-// console.log(title, ISBN, author);
+// const [mainKeyWord, ...rest] = books[0].keywords;
+// console.log(mainKeyWord, rest);
 
-// 2. Each book object has the keywords property. Destructure the first book object from the books
-//  array into a variable called tags.
-// The tags variable should be assigned with the value of the keywords property.
+// 2. Destructure the second book from the books array into a variable called bookPublisher.
+// The bookPublisher variable should be assigned with the value of the publisher property of the book object.
+// Assign the rest of the properties to the restOfTheBook variable.
 
-// My solution
-// const { keywords: tags } = books[0];
-// console.log(tags);
+// const { publisher: bookPublisher, ...restOfThebook } = books[1];
 
-// 3. The seventh book from the books array is missing the programmingLanguage property.
-// Destructure the seventh book object (books[6]) into variables called language and programmingLanguage.
-// Assign the programmingLanguage variable with a default value of 'unknown'.
+// console.log(bookPublisher, restOfThebook);
 
-// My solution
+// 3. Write a function called printBookAuthorsCount that has two parameters called title and authors.
+// The authors parameter should accept any number of arguments.
+// This function should log to the console a string formatted like that:
+// "The book "${title}" has ${authors.length} authors"
 
-// const { programmingLanguage = 'unknown', language } = books[6];
-// console.log(programmingLanguage, language);
-
-// 4. Below are two variables called bookTitle and bookAuthor.
-// Reassign them with the values of the title and author
-// properties of the first book object from the books array.
-
-// let bookTitle = 'unknown';
-// let bookAuthor = 'unknown';
-
-// ({ title: bookTitle, author: bookAuthor } = books[0]);
-
-// console.log(bookTitle, bookAuthor);
-
-// Each book object has a deeply nested rating property as illustrated below:
-
-// {
-//   title: 'Algorithms',
-
-//   thirdParty: {
-//     goodreads: {
-//       rating: 4.41,              // <-- HERE
-//       ratingsCount: 1733,
-//       reviewsCount: 63,
-//       fiveStarRatingCount: 976,
-//       oneStarRatingCount: 13
-//     }
-//   }
-// }
-// Destructure the first book object from the books array into a variable called bookRating.
-// In the result of your destructuring, the bookRating variable should be assigned with
-// the value of the book[0].thirdParty.goodreads.rating property.
-
-// Please do most of the work on the left side of the assignment operator: const ... = books[0];
-
-//My solution
-// const {
-//   thirdParty: {
-//     goodreads: { rating: bookRating },
-//   },
-// } = books[0];
-// console.log(bookRating)
-
-// books[0].printBookInfo({
-//   title: 'Algorithms',
-//   author: 'Robert Sedgewicks',
-//   year: '2011',
-// });
-
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-// console.log(badNewArr);
-
-const newArr = [1, 2, ...arr];
-console.log(newArr);
-console.log(...newArr);
-
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
-  },
+const printBookAuthorsCount = function (title, ...authors) {
+  console.log(`The book ${title} has ${authors.length} authors`);
 };
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-// console.log(newMenu);
-
-const mainMenuCopy = [...restaurant.mainMenu];
-const menu = [...mainMenuCopy, ...restaurant.starterMenu];
-// console.log(...menu);
-
-// const ingredients = [
-//   prompt('lets make pasta! Ingredient 1?'),
-//   prompt('Ingredient 2?'),
-//   prompt('Ingredient 3?'),
-// ];
-
-// restaurant.orderPasta(...ingredients);
-
-const newRestaurant = { fonundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
-// console.log(newRestaurant);
-
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurant.name);
-console.log(restaurantCopy.name);
+printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
