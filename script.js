@@ -555,6 +555,43 @@ const restaurant = {
 
 // restaurant.orderPizza('mushrooms', 'garlic', 'pepar');
 
+// 1. Destructure the keywords property (array) of the first book from the books array into variables called
+// mainKeyword and rest. The first keyword should be assigned to mainKeyword,
+// and the rest of the keywords should be assigned to the rest variable (it should be an array).
+
+// const [mainKeyWord, ...rest] = books[0].keywords;
+// console.log(mainKeyWord, rest);
+
+// 2. Destructure the second book from the books array into a variable called bookPublisher.
+// The bookPublisher variable should be assigned with the value of the publisher property of the book object.
+// Assign the rest of the properties to the restOfTheBook variable.
+
+// const { publisher: bookPublisher, ...restOfThebook } = books[1];
+
+// console.log(bookPublisher, restOfThebook);
+
+// 3. Write a function called printBookAuthorsCount that has two parameters called title and authors.
+// The authors parameter should accept any number of arguments.
+// This function should log to the console a string formatted like that:
+// "The book "${title}" has ${authors.length} authors"
+
+// const printBookAuthorsCount = function (title, ...authors) {
+//   console.log(`The book ${title} has ${authors.length} authors`);
+// };
+
+// printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// restaurant.numGuest = 23;
+// const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+// console.log(guest1);
+// const guest2 = restaurant.numGuest || 10;
+// console.log(guest2);
+
 const books = [
   {
     title: 'Algorithms',
@@ -625,6 +662,7 @@ const books = [
         oneStarRatingCount: 0,
       },
     },
+    // hasExamplesInJava: function()
     highlighted: true,
   },
   {
@@ -784,28 +822,58 @@ const books = [
   },
 ];
 
-// 1. Destructure the keywords property (array) of the first book from the books array into variables called
-// mainKeyword and rest. The first keyword should be assigned to mainKeyword,
-// and the rest of the keywords should be assigned to the rest variable (it should be an array).
+// My solution
+// const hasExamplesInJava = function (book) {
+//   console.log(
+//     book.programmingLanguage
+//       ? book.programmingLanguage
+//       : 'Has no data available'
+//   );
+// };
 
-// const [mainKeyWord, ...rest] = books[0].keywords;
-// console.log(mainKeyWord, rest);
+// Jonas solution
+function hasExamplesInJava(book) {
+  return book.programmingLanguage === 'Java' || 'no data available';
+}
 
-// 2. Destructure the second book from the books array into a variable called bookPublisher.
-// The bookPublisher variable should be assigned with the value of the publisher property of the book object.
-// Assign the rest of the properties to the restOfTheBook variable.
+hasExamplesInJava(books[0]);
 
-// const { publisher: bookPublisher, ...restOfThebook } = books[1];
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ||
+    console.log(`"${books[i].title}" provides online content`);
+}
 
-// console.log(bookPublisher, restOfThebook);
+const list = [
+  {
+    title: 'one',
+    value: true,
+  },
+  {
+    title: 'two',
+    value: false,
+  },
+  {
+    title: 'three',
+    value: false,
+  },
+];
 
-// 3. Write a function called printBookAuthorsCount that has two parameters called title and authors.
-// The authors parameter should accept any number of arguments.
-// This function should log to the console a string formatted like that:
-// "The book "${title}" has ${authors.length} authors"
+for (let i = 0; i < list.length; i++) {
+  list[i].value || console.log(`is true ${list[i].title}`);
+  // console.log([i]);
+}
 
-const printBookAuthorsCount = function (title, ...authors) {
-  console.log(`The book ${title} has ${authors.length} authors`);
-};
+// || = värden som är sant, && falskt
 
-printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// nullish: null and undefined (not 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ??
+    console.log(`${books[i].title} provides no online content`);
+}
