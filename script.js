@@ -961,3 +961,12 @@ for (let value of Object.values(odds)) {
 const averageOdds = sum / count;
 
 console.log(averageOdds);
+
+const { team1, team2, draw: draw = 'draw' } = game;
+const { team1: odds1, x: odds2, team2: odds3 } = game.odds;
+console.log(`Odd of victory ${team1}: ${odds1}`);
+console.log(`Odd of ${draw}: ${odds2}`);
+console.log(`Odd of victory ${team2}: ${odds3}`);
+
+const (scores: {Gnarby: 1, Hummels: 1,Lewandowski: 2}) = game
+l
